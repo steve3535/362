@@ -14,7 +14,7 @@
   
 * `ipa host-show`
   on voit les details du client - preter attention au seeting keytab. si c a false, alors le host nest pas actuellement provisionné
-* AUtre chose: toute machine enrolled upload sa ssh key sur le server. permettant ainsi a toute machine du domaine de se connecter sans confirmation d'acceptation du fingerprint
+* AUtre chose: toute machine enrolled upload sa ssh key sur le server. permettant ainsi a toute machine du domaine de se connecter sans confirmation d'acceptation du fingerprint: cool !   
 * 
 
 
