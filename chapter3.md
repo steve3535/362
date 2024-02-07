@@ -17,7 +17,7 @@
 * AUtre chose: toute machine enrolled upload sa ssh key sur le server. permettant ainsi a toute machine du domaine de se connecter sans confirmation d'acceptation du fingerprint: cool !   
 
 ### ipa replica install   
-* preliminaires: installer **ipa-server[-dns]** et ouvrir les memes ports que sur un server IPA:  
+* preliminaires: installer **ipa-server[-dns]**, ceer les entrees DNS requises et ouvrir les memes ports que sur un server IPA:  
   `firewall-cmd --add-service=freeipa-ldap --add-service=freeipa-ldaps --add-service=dns`  
 * on peut faire linstall sur une nouvelle machine ou on peut promouvoir un client existant  
   * sur une nouvelle machine:
@@ -29,9 +29,12 @@
        * `ipa hostgroup-add-member ipaservers --hosts serverxxx` pour le mettre dans le groupe des servers IPA  
        * (sur le server xxx) `ipa-replica-install -p 'OTP pass'` A noter que si linstall echoue ou reussie, l'OTP expire  
     3) on a la main sur la machine.
-       dans ce cas on peut fournir directement le principal admin:
-       `ipa-replica-install --setup-dns --forwarder 172.25.250.254 -w`
-       le -w implicite le username admin  
+       dans ce cas on peut fournir directement le principal admin:  
+       `ipa-replica-install --setup-dns --forwarder 172.25.250.254 -w redhat123`  
+       le -w implicite le username admin; si on doit utiliser un autre principal, on peut avec --principal ou tout simplement on kinit avec ce principal avant
+  * sur un client existant,a promouvoir:
+    `ipa-replica-install -w redhat123`
+    
     
 
 
